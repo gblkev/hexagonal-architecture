@@ -3,6 +3,7 @@ package com.gebel.hexagonalarchitecture.outbound.mysql.adapter;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import com.gebel.hexagonalarchitecture.hexagon.domain.Color;
@@ -22,6 +23,9 @@ public class ColorRepositoryAdapter implements ColorRepositoryPort {
 	
 	@Override
 	public Optional<Color> findById(String colorId) {
+		if (StringUtils.isBlank(colorId)) {
+			return Optional.empty();
+		}
 		return colorConverter.toDomain(colorRepository.findById(colorId));
 	}
 

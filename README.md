@@ -52,6 +52,9 @@ Triggers can be varied:
 
 ![Architecture](hexagonal-architecture.drawio.png?raw=true)
 
+TODO For convenience, we import the outbound in the inbound...
+Main difference with a 3-layer architecture: the business layer (hexagon) does not have any other Maven module as a dependency.
+
 ### Build the application
 Pre-requisite: in order for testcontainers to work, a Docker server has to be available on the machine (https://docs.docker.com/get-docker/).  
 Build modules in parallel (1 thread per available CPU core):
@@ -73,10 +76,10 @@ With a decent pc, it should be much, much faster.
    - To add a new message in Kafka, run the following JMX operation (with JConsole for instance): hexagonalarchitecture:name=kafka.consumers, publishCreateColorMessageToKafka
 
 ### Tests
-**sandbox** -> only integration tests because unit tests do not make sense  
-**dao** -> only integration tests because unit tests do not make sense  
-**business** -> only unit tests  
-**controller** -> only integration tests  
+**sandbox** -> only integration tests  
+**hexagon** -> only unit tests
+**outbound** -> integration tests (repositories) +  unit tests (adapters)  
+**inbound** -> only integration tests  
 All components necessary to run the application (MySQL, Redis, Kafka, etc.) are started with random ports once for every Maven module.  
 Then, data is cleared after each test / method.  
 
