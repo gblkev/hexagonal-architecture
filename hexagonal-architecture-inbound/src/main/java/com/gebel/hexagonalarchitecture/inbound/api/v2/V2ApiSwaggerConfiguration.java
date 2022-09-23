@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.HandlerMethod;
 
-import com.gebel.hexagonalarchitecture.inbound.api.v1.interfaces.V1ApiBaseUri;
+import com.gebel.hexagonalarchitecture.inbound.api.v1.adapter.interfaces.V1ApiBaseUri;
+import com.gebel.hexagonalarchitecture.inbound.api.v2.adapter.interfaces.V2ApiBaseUri;
 import com.gebel.hexagonalarchitecture.inbound.api.v2.error.ApiBusinessErrorCodeDto;
 import com.gebel.hexagonalarchitecture.inbound.api.v2.error.ApiBusinessErrorDto;
-import com.gebel.hexagonalarchitecture.inbound.api.v2.interfaces.V2ApiBaseUri;
 
 import io.swagger.v3.core.converter.AnnotatedType;
 import io.swagger.v3.core.converter.ModelConverters;

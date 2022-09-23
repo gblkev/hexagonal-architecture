@@ -28,6 +28,7 @@ import org.springframework.scheduling.support.ScheduledMethodRunnable;
 
 import com.gebel.hexagonalarchitecture.inbound._test.AbstractIntegrationTest;
 import com.gebel.hexagonalarchitecture.inbound._test.Log4jInMemoryAppender;
+import com.gebel.hexagonalarchitecture.inbound.scheduled.adapter.PrintDataReportInLogs;
 
 @SpringBootTest(
 	webEnvironment = WebEnvironment.RANDOM_PORT,

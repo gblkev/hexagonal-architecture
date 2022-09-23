@@ -12,15 +12,16 @@ Here are the implemented features:
    - A scheduled task
    - Consumption of a Kafka queue
    - Exposition of a JMX resource  
-   
-TODO talk about the naming
-client = inbound = application layer
-hexagon = domain layer
-server = outbound = infrastructure layer
-primary adapters = input = driving adapters
-secondary adapters = output = driven adapters
+
+The example I implemented is just a transposition of the 3-layer architecture example here (https://github.com/gblkev/three-layer-architecture).  
 
 ### Architecture
+One thing I realized when it comes to the hexagonal architecture is about the naming: there are plenty of different names to talk about the same thing.  
+In my case, I made the decision to talk about inbound - hexagon - outbound. Here are several synonyms:
+   - **inbound** = application layer (Alistair Cockburn) = client layer which contains primary adapters = driving adapters
+   - **hexagon** = domain layer (Alistair Cockburn) = business layer
+   - **outbound** = infrastructure layer (Alistair Cockburn) = server layer which contains secondary adapters = driven adapters
+
 **parent**  
 It's the Bill Of Materials (BOM) of the application. Any version of a library or a plugin used in this project must be defined in it.  
 It also contains the plugins configuration that has to be shared between all Maven modules (Java version, lombok configuration, tests configuration, etc.).  
@@ -34,14 +35,15 @@ It's used in 2 different contexts:
 
 The sandbox does not depend on any other Maven module (except the BOM).
 
-**dao**  
-DAO stands for Data Access Objects. It's maybe not the best term but it's probably the term which will speak to people the most.  
+**hexagon**  
+It's the heart of the application. It contains all the logic of the application.  
+This layer does not depend on any other module of the project (except the BOM).  
+It defines interfaces (ports) for the inbound and outbound layers in order to communicate.  
+
+**outbound**  
 This layer contains every component that connects to a system external to the JVM (a web service, a database, a distributed cache, etc.) or something that handles data for the application (a local cache for instance).  
 
-**business**  
-It's the heart of the application. It contains all the logic of the application.  
-
-**controller**  
+**inbound**  
 It's the remote controller of the application. Any event that triggers an action is implemented there.  
 Triggers can be varied:
    - An API
@@ -51,9 +53,6 @@ Triggers can be varied:
    - etc.
 
 ![Architecture](hexagonal-architecture.drawio.png?raw=true)
-
-TODO For convenience, we import the outbound in the inbound...
-Main difference with a 3-layer architecture: the business layer (hexagon) does not have any other Maven module as a dependency.
 
 ### Build the application
 Pre-requisite: in order for testcontainers to work, a Docker server has to be available on the machine (https://docs.docker.com/get-docker/).  

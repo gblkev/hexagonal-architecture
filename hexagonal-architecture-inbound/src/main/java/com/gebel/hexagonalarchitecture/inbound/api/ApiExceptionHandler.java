@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.gebel.hexagonalarchitecture.hexagon.domain.BusinessException;
-import com.gebel.hexagonalarchitecture.inbound.api.v1.converter.V1ApiBusinessErrorConverter;
+import com.gebel.hexagonalarchitecture.inbound.api.v1.adapter.converter.V1ApiBusinessErrorConverter;
 
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

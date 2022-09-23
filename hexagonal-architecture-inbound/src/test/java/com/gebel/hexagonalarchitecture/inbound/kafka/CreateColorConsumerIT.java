@@ -15,6 +15,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 
 import com.gebel.hexagonalarchitecture.inbound._test.AbstractIntegrationTest;
 import com.gebel.hexagonalarchitecture.inbound.api.v2.dto.ColorDto;
+import com.gebel.hexagonalarchitecture.inbound.kafka.adapter.CreateColorConsumer;
 import com.gebel.hexagonalarchitecture.inbound.kafka.model.CreateColorModel;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
