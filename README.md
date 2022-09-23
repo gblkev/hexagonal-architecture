@@ -76,7 +76,7 @@ With a decent pc, it should be much, much faster.
 
 ### Tests
 **sandbox** -> only integration tests  
-**hexagon** -> only unit tests
+**hexagon** -> only unit tests  
 **outbound** -> integration tests (repositories) +  unit tests (adapters)  
 **inbound** -> only integration tests  
 All components necessary to run the application (MySQL, Redis, Kafka, etc.) are started with random ports once for every Maven module.  
